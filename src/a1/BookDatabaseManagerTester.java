@@ -17,12 +17,10 @@ public class BookDatabaseManagerTester {
         List<Author> authorList = BookDatabaseManager.getAllAuthors();
         authorList.forEach(author -> author.printAuthorInformation(System.out));
 
-
         //These work ok:
 
         //BookDatabaseManager.insertBook(new Book("12345438", "Aces High - Bruce Dickinson Story", 2, "2021"));
 
         //BookDatabaseManager.getBookByISBN("12345434").printBookInformation(System.out);
-
     }
 }

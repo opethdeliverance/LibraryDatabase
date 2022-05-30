@@ -13,6 +13,12 @@ public class Author {
     private String lastName;
     private List<Book> bookList;
 
+    /**
+     * simple constructor for author class
+     * @param authorID
+     * @param firstName
+     * @param lastName
+     */
     public Author(int authorID, String firstName, String lastName) {
         this.authorID = authorID;
         this.firstName = firstName;
@@ -26,34 +32,66 @@ public class Author {
 //
 //    }
 
+    /**
+     * getter for the book list
+     * @return
+     */
     public List<Book> getBookList() {
         return bookList;
     }
 
+    /**
+     * setter for the book list
+     * @param bookList
+     */
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
     }
 
+    /**
+     * getter for the author ID
+     * @return
+     */
     public int getAuthorID() {
         return authorID;
     }
 
+    /**
+     * setter for the author ID
+     * @param authorID
+     */
     public void setAuthorID(int authorID) {
         this.authorID = authorID;
     }
 
+    /**
+     * getter for the author's first name
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * setter for the author's first name
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * getter for the author's last name
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * setter for the author's last name
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -70,5 +108,4 @@ public class Author {
                     book.getIsbn(), book.getTitle(), book.getEditionNumber(), book.getCopyright());
         });
     }
-
 }

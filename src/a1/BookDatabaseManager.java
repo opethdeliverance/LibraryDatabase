@@ -10,9 +10,7 @@ import java.util.Stack;
  */
 
 public class BookDatabaseManager {
-
     public static LibraryManager getLibraryManager() {
-
         return new LibraryManager(new BookDatabaseManager());
     }
 
@@ -27,7 +25,6 @@ public class BookDatabaseManager {
      */
     public static List<Book> getAllBooks() {
         LinkedList bookList = new LinkedList();
-
         try (
                 Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -43,13 +40,10 @@ public class BookDatabaseManager {
                         resultSet.getString(BooksDatabaseSQL.BOOK_COL_NAME_COPYRIGHT)
                 ));
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return bookList;
-
     }
 
     /**
@@ -59,10 +53,8 @@ public class BookDatabaseManager {
      */
     public static Book getBookByISBN(String isbn) {
         LinkedList bookList = new LinkedList();
-
         try (
                 Connection connection = getConnection();
-
         ) {
             String sqlQuery = "SELECT * from " + BooksDatabaseSQL.BOOK_TABLE_NAME +
                     "where " + BooksDatabaseSQL.BOOK_COL_NAME_ISBN + " = ?";
@@ -78,13 +70,10 @@ public class BookDatabaseManager {
                         resultSet.getString(BooksDatabaseSQL.BOOK_COL_NAME_COPYRIGHT)
                 );
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
-
     }
 
     /**
@@ -93,10 +82,8 @@ public class BookDatabaseManager {
      * @return
      */
     public static boolean insertBook(Book book) {
-
         try (
                 Connection connection = getConnection();
-
         ) {
             String sqlQuery = "INSERT INTO " + BooksDatabaseSQL.BOOK_TABLE_NAME +
                     " VALUES (?,?,?,?)";
@@ -118,13 +105,10 @@ public class BookDatabaseManager {
                 preparedStatement1.setInt(1, author.getAuthorID());
                 preparedStatement1.execute();
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-
         return true;
     }
 
@@ -134,7 +118,6 @@ public class BookDatabaseManager {
      */
     public static List<Author> getAllAuthors() {
         LinkedList authorList = new LinkedList();
-
         try (
                 Connection connection = getConnection();
                 Statement statement = connection.createStatement();
@@ -149,13 +132,10 @@ public class BookDatabaseManager {
                         resultSet.getString(AuthorDatabaseSQL.AUTHOR_COL_NAME_LAST_NAME)
                 ));
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return authorList;
-
     }
 
     /**
@@ -164,10 +144,8 @@ public class BookDatabaseManager {
      * @return
      */
     public static boolean insertAuthor(Author author) {
-
         try (
                 Connection connection = getConnection();
-
         ) {
             String sqlQuery = "INSERT INTO " + AuthorDatabaseSQL.AUTHORS_TABLE_NAME +
                     " VALUES (?,?,?)";
@@ -178,13 +156,10 @@ public class BookDatabaseManager {
             preparedStatement.setString(2, author.getLastName());
 
             preparedStatement.executeQuery();
-
-
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
-
         return true;
     }
 
@@ -206,7 +181,6 @@ public class BookDatabaseManager {
      */
     private class BooksDatabaseSQL {
 
-
         public static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
         public static final String DB_URL = "jdbc:mariadb://localhost:3304/books";
         public static final String USER = "root";
@@ -217,7 +191,6 @@ public class BookDatabaseManager {
         public static final String BOOK_COL_NAME_TITLE = "title";
         public static final String BOOK_COL_NAME_EDITION_NUMBER = "editionNumber";
         public static final String BOOK_COL_NAME_COPYRIGHT = "copyright";
-
     }
 
     private class AuthorDatabaseSQL{
@@ -225,7 +198,6 @@ public class BookDatabaseManager {
         public static final String AUTHOR_COL_NAME_AUTHOR_ID = "authorID";
         public static final String AUTHOR_COL_NAME_FIRST_NAME = "firstName";
         public static final String AUTHOR_COL_NAME_LAST_NAME = "lastName";
-
     }
 }
 

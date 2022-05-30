@@ -26,7 +26,6 @@ public class Book {
         this.title = title;
         this.editionNumber = editionNumber;
         this.copyright = copyright;
-
     }
 
     /**
@@ -101,5 +100,4 @@ public class Book {
             System.out.printf("\nFirst Name: %-15s Last Name: %s", author.getFirstName(), author.getLastName());
         });
     }
-
 }
